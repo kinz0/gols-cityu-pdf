@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>GOLS CityU POD Converter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+        <form class="container-fluid" action="{% url 'upload-view' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="h3">{{ message }}</p>
+            <p>
+                <p>{{ image_form.non_field_errors }}</p>
+
+                <p>
+                    <i>Please Select Multiple Images at Once (.png) </i><br>
+                    {{ image_form.pngfile.errors }}
+                    {{ image_form.pngfile }}
+                </p>
+            </p>
+
+            <p>
+                <p>{{ excel_form.non_field_errors }}</p>
+
+                <p>
+                    <i>Please Select an Excel File (.xlsx)</i><br>
+                    {{ excel_form.excelfile.errors }}
+                    {{ excel_form.excelfile }}
+                </p>
+            </p>
+
+            <p>
+                <i>Please Select a POD Issue Month</i><br>
+                <input type="month" name="pod_month"/><br>
+            </p>
+
+            <p><input type="submit" value="Upload"/><br></p>
+        </form>
+
+</body>
+</html>
